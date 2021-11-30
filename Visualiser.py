@@ -20,7 +20,8 @@ class Visualiser(object):
         # Initialize graphics objects
         self.circles = []
         for planet in self.planets:
-            p = Circle((planet.position[0], planet.position[1]), 0.03)
+            p = Circle((planet.position[0], planet.position[1]), 
+                       planet.dimension, color=planet.color)
             p.set_visible(False)
             axes.add_patch(p)
             self.circles.append(p)

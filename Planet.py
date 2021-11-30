@@ -3,10 +3,12 @@ class Planet(object):
     Defines a class for the planets.
     """
 
-    def __init__(self, mass, position, velocity):
+    def __init__(self, mass, position, velocity, dimension, color):
         self._mass = mass
         self.position = position
         self.velocity = velocity
+        self.dimension = dimension
+        self.color = color
 
     @property
     def mass(self):
