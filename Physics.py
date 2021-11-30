@@ -1,4 +1,5 @@
 import numpy as np
+from itertools import combinations
 
 
 def distance(p1, p2):
@@ -37,14 +38,16 @@ class Gravity(object):
         """
         return self.G * (p1.mass * p2.mass)/(distance(p1, p2)**2) * rVersor(p1, p2)
 
-    def timestep(self, p1, p2):
+    def timestep(self, planets):
         """
         Modifies position and velocity of the planets
         according to Newton's gravitation law.
         """
+        planet_pairs = list(combinations(planets, 2))
 
-        p1.velocity += -self.g(p1, p2)/p1.mass * self.dt
-        p2.velocity += -self.g(p2, p1)/p2.mass * self.dt
+        for p1, p2 in planet_pairs:
+            p1.velocity += -self.g(p1, p2)/p1.mass * self.dt
+            p2.velocity += -self.g(p2, p1)/p2.mass * self.dt
 
-        p1.position += p1.velocity * self.dt
-        p2.position += p2.velocity * self.dt
+        for p in planets:
+            p.position += p.velocity * self.dt

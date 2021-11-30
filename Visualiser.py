@@ -14,13 +14,13 @@ class Visualiser(object):
         # Initialize figure
         figure = plt.figure()
         axes = figure.add_subplot(111, aspect='equal')
-        axes.set_xlim(-2, 2)
-        axes.set_ylim(-2, 2)
+        axes.set_xlim(-1.5, 1.5)
+        axes.set_ylim(-1.5, 1.5)
 
         # Initialize graphics objects
         self.circles = []
         for planet in self.planets:
-            p = Circle((planet.position[0], planet.position[1]), 0.1)
+            p = Circle((planet.position[0], planet.position[1]), 0.03)
             p.set_visible(False)
             axes.add_patch(p)
             self.circles.append(p)
@@ -34,7 +34,7 @@ class Visualiser(object):
                     c.set_visible(True)
 
             # Call the user updateFunc
-            self.physics.timestep(self.planets[0], self.planets[1])
+            self.physics.timestep(self.planets)
 
             for c, p in zip(self.circles, self.planets):
                 c.center = (p.position[0], p.position[1])
