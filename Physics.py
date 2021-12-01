@@ -30,7 +30,7 @@ class Gravity(object):
         self.G = 39.478
 
         # time step in years (1 day)
-        self.dt = 1/365.0
+        self.dt = 1/365.0/2.0
 
     def g(self, p1, p2):
         """

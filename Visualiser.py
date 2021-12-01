@@ -14,8 +14,8 @@ class Visualiser(object):
         # Initialize figure
         figure = plt.figure(figsize=(7, 7))
         axes = figure.add_subplot(111, aspect='equal')
-        axes.set_xlim(-1.5, 1.5)
-        axes.set_ylim(-1.5, 1.5)
+        axes.set_xlim(-2, 2)
+        axes.set_ylim(-2, 2)
 
         # Initialize graphics objects
         self.circles = []
@@ -43,7 +43,7 @@ class Visualiser(object):
                         if p2.name == "Earth":
                             earth = p2
                             break
-                    c.center = (earth.position[0] + (p.position[0] - earth.position[0])*40, earth.position[1] + (p.position[1] - earth.position[1])*40)
+                    c.center = (earth.position[0] + (p.position[0] - earth.position[0])*50, earth.position[1] + (p.position[1] - earth.position[1])*50)
                 else:
                     c.center = (p.position[0], p.position[1])
 
